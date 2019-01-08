@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>View1</title>
+</head>
+<body>
+    <h1>I am View1</h1>
+
+    <div class="container">
+        Name: <input type="text" data-ng-model="filter.name" />
+
+        <ul>
+            <li data-ng-repeat="person in persons | filter:name | orderBy:'city'">{{ person.name }} - {{ person.city }}</li>
+        </ul>
+
+        Person Name: <input type="text" data-ng-model="newPerson.name"/>
+        <br />
+        Person City: <input type="text" data-ng-model="newCity.city" />
+        <br />
+        <button data-ng-click="addPerson()">Add Person</button>
+        <a href="#/view2">View2</a>
+    </div>
+</body>
+</html>

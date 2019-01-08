@@ -8,11 +8,8 @@
 
     <div data-ng-controller="SimpleController">
 
-        Name: <input type="text" data-ng-model="name" /> {{ name }}
-
-        <ul>
-            <li data-ng-repeat="person in persons | filter:name | orderBy:'city'">{{ person.name }} - {{ person.city }}</li>
-        </ul>
+        <!---Plae holder for views--->
+        <div data-ng-view=""></div>
 
     </div>
 
@@ -20,19 +17,19 @@
 
         var app = angular.module("myApp2", []);
 
-        myapp2.config(function ($routeProvider) {
+        app.config(function ($routeProvider) {
             $routeProvider
-                .when('/',
-                {
-                    controller: 'SimpleController',
-                    templaterUrl: 'Partials/view1.html'
-                })
-                .when('/partial2',
-                {
-                    controller: 'SimpleController',
-                    templaterUrl: 'Partials/view2.html'
-                })
-                .otherwise({ redirectTo: '/'})
+                .when('/view1',
+                    {
+                        controller: 'SimpleController',
+                        templaterUrl: 'Partials/view1.html'
+                    })
+                .when('/view2',
+                    {
+                        controller: 'SimpleController',
+                        templaterUrl: 'Partials/view2.html'
+                    })
+                .otherwise({ redirectTo: '/view1' });
         });
 
         app.controller('SimpleController', function ($scope) {
@@ -42,6 +39,16 @@
                 { name: 'Rita', city: 'Savar' },
                 { name: 'Rudro', city: 'Gazipur' }
             ];
+
+            $scope.addPerson = function () {
+                $scope.persons.push(
+                    {
+                        name: $scope.newPerson.name,
+                        city: $scope.newPerson.city
+                    }
+                );
+            };
+
         });
 
     </script>
