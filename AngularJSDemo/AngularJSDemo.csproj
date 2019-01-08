@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DirectiveViewScopeController.html" />
+    <Content Include="ModulesRoutesFactories.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
