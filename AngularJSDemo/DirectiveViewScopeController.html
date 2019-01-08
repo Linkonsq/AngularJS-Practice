@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+    <script src="Scripts/angular.min.js"></script>
+    <title>AngularJS Demo</title>
+</head>
+
+<body>
+
+    <div data-ng-controller="SimpleController">
+
+        Name: <input type="text" data-ng-model="name" /> {{ name }}
+
+        <ul>
+            <li data-ng-repeat="person in persons | filter:name | orderBy:'city'">{{ person.name }} - {{ person.city }}</li>
+        </ul>
+
+    </div>
+
+    <div data-ng-init="names=['Linkon', 'Ripon', 'Rudro', 'Rafi']">
+        <ul>
+            <li data-ng-repeat="personNames in names">{{ personNames }}</li>
+        </ul>
+    </div>
+
+    <!---Filters-->
+    <div data-ng-init="customers=[{name: 'Linkon', city: 'Dhaka'}, {name: 'Ripon', city: 'Tangail'}, {name: 'Rita', city: 'Savar'} ,{name: 'Rudro', city: 'Gazipur'}]">
+        <ul>
+            <li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{ cust.name }} - {{ cust.city }}</li>
+        </ul>
+    </div>
+
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller('SimpleController', function ($scope) {
+            $scope.persons = [
+            { name: 'Linkon', city: 'Dhaka' },
+            { name: 'Ripon', city: 'Tangail' },
+            { name: 'Rita', city: 'Savar' },
+            { name: 'Rudro', city: 'Gazipur' }
+            ];
+        });
+
+        //function SimpleController($scope) {
+        //    $scope.persons = [
+        //        { name: 'Linkon', city: 'Dhakaaaaa' },
+        //        { name: 'Ripon', city: 'Tangail' },
+        //        { name: 'Rita', city: 'Savar' },
+        //        { name: 'Rudro', city: 'Gazipur' }
+        //    ];
+        //}
+    </script>
+
+</body>
+</html>
