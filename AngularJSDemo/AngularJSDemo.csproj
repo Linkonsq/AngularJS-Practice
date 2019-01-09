@@ -68,9 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DirectiveViewScopeController.html" />
-    <Content Include="ModulesRoutesFactories.html" />
-    <Content Include="Partials\view2.html" />
-    <Content Include="Partials\view1.html" />
+    <Content Include="Factories.html" />
+    <Content Include="ModulesRoutes.html" />
+    <Content Include="Partials\View2.html" />
+    <Content Include="Partials\View1.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -104,7 +105,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55304</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55304/</IISUrl>
+          <IISUrl>http://localhost:55305/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

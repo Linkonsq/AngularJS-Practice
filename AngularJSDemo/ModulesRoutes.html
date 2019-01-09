@@ -2,6 +2,7 @@
 <html data-ng-app="myApp2">
 <head>
     <script src="Scripts/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
     <title>Modules, Routes and Factories</title>
 </head>
 <body>
@@ -15,19 +16,19 @@
 
     <script>
 
-        var app = angular.module("myApp2", []);
+        var app = angular.module("myApp2", ['ngRoute']);
 
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/view1',
                     {
                         controller: 'SimpleController',
-                        templaterUrl: 'Partials/view1.html'
+                        templateUrl: 'Partials/View1.html'
                     })
                 .when('/view2',
                     {
                         controller: 'SimpleController',
-                        templaterUrl: 'Partials/view2.html'
+                        templateUrl: 'Partials/View2.html'
                     })
                 .otherwise({ redirectTo: '/view1' });
         });
@@ -44,7 +45,7 @@
                 $scope.persons.push(
                     {
                         name: $scope.newPerson.name,
-                        city: $scope.newPerson.city
+                        city: $scope.newCity.city
                     }
                 );
             };

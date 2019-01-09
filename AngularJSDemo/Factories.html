@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="myApp2">
+<head>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
+    <title>Modules, Routes and Factories</title>
+</head>
+<body>
+
+    <div data-ng-controller="SimpleController">
+
+        <!---Plae holder for views--->
+        <div data-ng-view=""></div>
+
+    </div>
+
+    <script>
+
+        var app = angular.module("myApp2", ['ngRoute']);
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/view1',
+                    {
+                        controller: 'SimpleController',
+                        templateUrl: 'Partials/View1.html'
+                    })
+                .when('/view2',
+                    {
+                        controller: 'SimpleController',
+                        templateUrl: 'Partials/View2.html'
+                    })
+                .otherwise({ redirectTo: '/view1' });
+        });
+
+        app.factory('SimpleFactory', function () {
+            var persons = [
+                { name: 'Linkon', city: 'Dhaka' },
+                { name: 'Ripon', city: 'Tangail' },
+                { name: 'Rita', city: 'Savar' },
+                { name: 'Rudro', city: 'Gazipur' }
+            ];
+
+            var factory = {};
+
+            factory.getPersons = function () {
+                return persons;
+            };
+
+            factory.postCustomer = function (customer) {
+
+            };
+
+            return factory;
+        });
+
+        app.controller('SimpleController', function ($scope, SimpleFactory) {
+            $scope.persons = [];
+
+            init();
+
+            function init() {
+                $scope.persons = SimpleFactory.getPersons();
+            }
+
+            $scope.addPerson = function () {
+                $scope.persons.push(
+                    {
+                        name: $scope.newPerson.name,
+                        city: $scope.newCity.city
+                    }
+                );
+            };
+
+        });
+
+    </script>
+</body>
+</html>
